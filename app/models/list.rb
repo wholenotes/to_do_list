@@ -1,3 +1,5 @@
 class List < ActiveRecord::Base
-  attr_accessible :title
+  has_many :tasks
+  accepts_nested_attributes_for :tasks
+  validates_presence_of :title
 end

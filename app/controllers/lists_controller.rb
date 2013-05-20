@@ -19,6 +19,7 @@ class ListsController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @list }
     end
+    @task = Task.new
   end
 
   # GET /lists/new
