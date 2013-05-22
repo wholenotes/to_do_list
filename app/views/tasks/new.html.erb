@@ -1,0 +1,21 @@
+<div class = "new">
+  <p id="notice"><%= notice %></p>
+
+
+  <div class="task-list-container">
+    <div class="list-title"><%= @list.title %> -></div>
+    <div class="task-list">
+      <% @list.tasks.each do |task|  %>
+      <%= render :partial => "task", :locals => {:task => task, :list => @list} %>
+      <% end %>
+      <%= form_for([@list,@task], url: list_tasks_path(@list, @task)) do |f| %>
+          <%= f.text_field :description %>
+          <%= f.hidden_field :list_id %>
+          <%= f.submit %>
+
+      <% end %>
+
+    </div>
+  </div>
+
+</div>
