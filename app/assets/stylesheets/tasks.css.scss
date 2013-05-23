@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .new, body, html {
-  background-color: #d3d3d3;
+  background-color: #d6d6d6;
   .task-list-container {
     position: relative;
     top:50px;
@@ -11,14 +11,44 @@
     margin: 0px auto;
     height:540px;
     .list-title{
-      font-size: 42px;
+      font-family: Helvetica Narrow, sans-serif;
+      font-size: 47px;
       font-weight: bold;
-      height: 20px;
-      padding: 15px 15px 15px 15px;
+      color: #363636;
+      padding: 0px 0px 20px 0;
 
     }
-    .task-list {
+    .task-list{
       background-color: #ffffff;
+      border-radius: 15px;
+      border:1px solid black;
+      .task-row{
+        padding: 15px 15px 15px 15px;
+        border-bottom:1px solid black;
+        .status-field{
+          display:inline;
+          text-align: center;
+        }
+        .update-action{
+          display:inline;
+        }
+        .description-field{
+          display:inline;
+        }
+        .delete-action{
+          float:right;
+          a:link {
+            text-decoration:none;
+            color: red;
+          }
+        }
+      }
+      .add-task-form{
+        padding: 15px 15px 15px 15px;
+        #task_description{
+          width:307px;
+        }
+      }
     }
 
   }

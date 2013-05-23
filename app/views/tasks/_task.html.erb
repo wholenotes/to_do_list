@@ -1,26 +1,32 @@
-<%= form_for([@list,@task]) do |f| %>
+<%= form_for([@list,task]) do |f| %>
   <%= f.hidden_field :list_id %>
-  <% if @task.errors.any? %>
+  <% if task.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
 
       <ul>
-      <% @task.errors.full_messages.each do |msg| %>
+      <% task.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
+  <div class="status-field">
+    <%= f.check_box :status %>
+  </div>
+  <div class="update-action">
+    <%= f.submit "update" %>
+  </div>
+  <div class="description-field">
     <%= task.description %>
   </div>
-  <div class="field">
-    <%= check_box_tag(:status) %>
+  <div class="delete-action">
+    <%= link_to "X",
+                list_task_path(list, task),
+                :confirm => "Are you sure you want to delete this task?",
+                :method => :delete,
+                :style=>'color:red', :class => "css_class" %>
   </div>
-  <div class="actions">
-    <%= link_to "delete", list_task_path(list, task),
-                  :confirm => "Are you sure you want to delete this task?", :method => :delete %>
-  </div>
+
 
 <% end %>

@@ -59,10 +59,10 @@ class TasksController < ApplicationController
   # PUT /tasks/1.json
   def update
     @task = Task.find(params[:id])
-
+    @task.status = params[:task][:status]
     respond_to do |format|
-      if @task.update_attributes(params[:task])
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+      if @task.save
+        format.html { redirect_to new_list_task_path(@task.list), notice: 'Task was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

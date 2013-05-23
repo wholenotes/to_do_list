@@ -3,18 +3,23 @@
 
 
   <div class="task-list-container">
-    <div class="list-title"><%= @list.title %> -></div>
+    <div class="list-title">
+      <%= @list.title %> ->
+    </div>
     <div class="task-list">
-      <% @list.tasks.each do |task|  %>
-      <%= render :partial => "task", :locals => {:task => task, :list => @list} %>
-      <% end %>
-      <%= form_for([@list,@task], url: list_tasks_path(@list, @task)) do |f| %>
-          <%= f.text_field :description %>
-          <%= f.hidden_field :list_id %>
-          <%= f.submit %>
 
-      <% end %>
-
+       <% @list.tasks.each do |task|  %>
+          <div class="task-row">
+            <%= render :partial => "task", :locals => {:task => task, :list => @list} %>
+          </div>
+       <% end %>
+      <div class="add-task-form">
+          <%= form_for([@list,@task], url: list_tasks_path(@list, @task)) do |f| %>
+              <%= f.text_field :description %>
+              <%= f.hidden_field :list_id %>
+              <%= f.submit "Add" %>
+          <% end %>
+      </div>
     </div>
   </div>
 
